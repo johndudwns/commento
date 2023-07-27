@@ -1,5 +1,5 @@
 from django.shortcuts import render
-#commit 확인용234
+#commit 원격 확인용4
 
 # Create your views here.
 def mainpage(request):
