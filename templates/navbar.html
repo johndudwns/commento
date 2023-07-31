@@ -1,16 +1,16 @@
     <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container px-5">
-            <a class="navbar-brand" href="/">django company</a>
+            <a class="navbar-brand" href="/" style="text-size:30px;">Acompany</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bstarget="#navbarSupportedContent" aria-controls="navbarSupportedContent" ariaexpanded="false" aria-label="Toggle navigation"><span class="navbar-togglericon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/company/">company info</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/mysite/">product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/company/">회사소개</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mysite/">상품소개</a></li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">{{ user.username }} (logout)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">{{ user.username }} (로그아웃)</a></li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">로그인</a></li>
                     {% endif %}
                 </ul>
             </div>
