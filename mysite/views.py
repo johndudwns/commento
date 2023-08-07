@@ -4,8 +4,9 @@ from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import MainContent, Comment
+from .models import MainContent, Comment, Post
 from .forms import CommentForm
+from django.core.paginator import Paginator, PageNotAnInteger,EmptyPage
 
 
 # Create your views here.
@@ -13,9 +14,11 @@ from .forms import CommentForm
 
 def index(request):
     #    return HttpResponse("Hello world")
-
+    page = request.GET.get('page','1')
     content_list = MainContent.objects.order_by('-pub_date')
-    context = {'content_list': content_list}
+    paginator = Paginator(content_list,3)
+    page_obj = paginator.get_page(page)
+    context = {'content_list': page_obj}
     return render(request, 'mysite/content_list.html', context)
 
 
@@ -67,3 +70,17 @@ def comment_delete(request, comment_id):
     else:
         comment.delete()
     return redirect('detail', content_id=comment.content_list.id)
+
+# def post_list(request):
+#     content_list = Post.objects.all()
+#     page = request.GET.get('page')
+#     paginator = Paginator(content_list,3)
+#     try:
+#         page_obj = paginator.page(page)
+#     except PageNotAnInteger:
+#         page = 1
+#         page_obj = paginator.page(page)
+#     except EmptyPage:
+#         page = paginator.num_pages
+#         page_obj = paginator.page(page)
+#     return render(request, 'mysite/content_list.html',{'content_list':content_list, 'page_obj':page_obj,'paginator':paginator})
