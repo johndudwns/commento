@@ -3,7 +3,7 @@ from .models import MainContent, Comment
 
 @admin.register(MainContent)
 class MainContentAdmin(admin.ModelAdmin):
-    list_display = ['title', 'image','content', 'pub_date']
+    list_display = ['title', 'image','content','content_detail', 'pub_date']
     search_fields = ['title']
 
 

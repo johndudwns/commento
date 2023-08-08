@@ -7,6 +7,7 @@ class MainContent(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/',blank=True)
     content = models.TextField()
+    content_detail = models.TextField()
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):
